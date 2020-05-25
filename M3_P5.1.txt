@@ -1,0 +1,411 @@
+Microsoft Windows [Version 10.0.18363.836]
+(c) 2019 Microsoft Corporation. All rights reserved.
+
+C:\Users\Admin>mysql -u root -h localhost -p
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 45
+Server version: 8.0.20 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| bank_accounts_mng  |
+| car_showroom       |
+| classicmodels      |
+| information_schema |
+| librarymanager     |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| testdatabase       |
+| world              |
++--------------------+
+11 rows in set (0.00 sec)
+
+mysql> use classicmodels;
+Database changed
+mysql> select avg(buyPrice) as avgProductPrice
+    -> from products;
++-----------------+
+| avgProductPrice |
++-----------------+
+|       54.395182 |
++-----------------+
+1 row in set (0.01 sec)
+
+mysql> select count(productcode) as totalProducts from producsts;
+ERROR 1146 (42S02): Table 'classicmodels.producsts' doesn't exist
+mysql> select count(productcode) as totalProducts from products;
++---------------+
+| totalProducts |
++---------------+
+|           110 |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> select max(buyPrice) as mostExpensive from products;
++---------------+
+| mostExpensive |
++---------------+
+|        103.42 |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> select min(buyPrice) as cheapestProduct from products;
++-----------------+
+| cheapestProduct |
++-----------------+
+|           15.91 |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> select sum(quantityInStock) from products;
++----------------------+
+| sum(quantityInStock) |
++----------------------+
+|               555131 |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> select sum(quantityInStock) as quantityMotorCycles from products where productLine
+    -> ='Motorcycles';
++---------------------+
+| quantityMotorCycles |
++---------------------+
+|               69401 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select ucase(productName) from products
+    -> group by(productName);
++---------------------------------------------+
+| ucase(productName)                          |
++---------------------------------------------+
+| 1969 HARLEY DAVIDSON ULTIMATE CHOPPER       |
+| 1952 ALPINE RENAULT 1300                    |
+| 1996 MOTO GUZZI 1100I                       |
+| 2003 HARLEY-DAVIDSON EAGLE DRAG BIKE        |
+| 1972 ALFA ROMEO GTA                         |
+| 1962 LANCIAA DELTA 16V                      |
+| 1968 FORD MUSTANG                           |
+| 2001 FERRARI ENZO                           |
+| 1958 SETRA BUS                              |
+| 2002 SUZUKI XREO                            |
+| 1969 CORVAIR MONZA                          |
+| 1968 DODGE CHARGER                          |
+| 1969 FORD FALCON                            |
+| 1970 PLYMOUTH HEMI CUDA                     |
+| 1957 CHEVY PICKUP                           |
+| 1969 DODGE CHARGER                          |
+| 1940 FORD PICKUP TRUCK                      |
+| 1993 MAZDA RX-7                             |
+| 1937 LINCOLN BERLINE                        |
+| 1936 MERCEDES-BENZ 500K SPECIAL ROADSTER    |
+| 1965 ASTON MARTIN DB5                       |
+| 1980S BLACK HAWK HELICOPTER                 |
+| 1917 GRAND TOURING SEDAN                    |
+| 1948 PORSCHE 356-A ROADSTER                 |
+| 1995 HONDA CIVIC                            |
+| 1998 CHRYSLER PLYMOUTH PROWLER              |
+| 1911 FORD TOWN CAR                          |
+| 1964 MERCEDES TOUR BUS                      |
+| 1932 MODEL A FORD J-COUPE                   |
+| 1926 FORD FIRE ENGINE                       |
+| P-51-D MUSTANG                              |
+| 1936 HARLEY DAVIDSON EL KNUCKLEHEAD         |
+| 1928 MERCEDES-BENZ SSK                      |
+| 1999 INDY 500 MONTE CARLO SS                |
+| 1913 FORD MODEL T SPEEDSTER                 |
+| 1934 FORD V8 COUPE                          |
+| 1999 YAMAHA SPEED BOAT                      |
+| 18TH CENTURY VINTAGE HORSE CARRIAGE         |
+| 1903 FORD MODEL A                           |
+| 1992 FERRARI 360 SPIDER RED                 |
+| 1985 TOYOTA SUPRA                           |
+| COLLECTABLE WOODEN TRAIN                    |
+| 1969 DODGE SUPER BEE                        |
+| 1917 MAXWELL TOURING CAR                    |
+| 1976 FORD GRAN TORINO                       |
+| 1948 PORSCHE TYPE 356 ROADSTER              |
+| 1957 VESPA GS150                            |
+| 1941 CHEVROLET SPECIAL DELUXE CABRIOLET     |
+| 1970 TRIUMPH SPITFIRE                       |
+| 1932 ALFA ROMEO 8C2300 SPIDER SPORT         |
+| 1904 BUICK RUNABOUT                         |
+| 1940S FORD TRUCK                            |
+| 1939 CADILLAC LIMOUSINE                     |
+| 1957 CORVETTE CONVERTIBLE                   |
+| 1957 FORD THUNDERBIRD                       |
+| 1970 CHEVY CHEVELLE SS 454                  |
+| 1970 DODGE CORONET                          |
+| 1997 BMW R 1100 S                           |
+| 1966 SHELBY COBRA 427 S/C                   |
+| 1928 BRITISH ROYAL NAVY AIRPLANE            |
+| 1939 CHEVROLET DELUXE COUPE                 |
+| 1960 BSA GOLD STAR DBD34                    |
+| 18TH CENTURY SCHOONER                       |
+| 1938 CADILLAC V-16 PRESIDENTIAL LIMOUSINE   |
+| 1962 VOLKSWAGEN MICROBUS                    |
+| 1982 DUCATI 900 MONSTER                     |
+| 1949 JAGUAR XK 120                          |
+| 1958 CHEVY CORVETTE LIMITED EDITION         |
+| 1900S VINTAGE BI-PLANE                      |
+| 1952 CITROEN-15CV                           |
+| 1982 LAMBORGHINI DIABLO                     |
+| 1912 FORD MODEL T DELIVERY WAGON            |
+| 1969 CHEVROLET CAMARO Z28                   |
+| 1971 ALPINE RENAULT 1600S                   |
+| 1937 HORCH 930V LIMOUSINE                   |
+| 2002 CHEVY CORVETTE                         |
+| 1940 FORD DELIVERY SEDAN                    |
+| 1956 PORSCHE 356A COUPE                     |
+| CORSAIR F4U ( BIRD CAGE)                    |
+| 1936 MERCEDES BENZ 500K ROADSTER            |
+| 1992 PORSCHE CAYENNE TURBO SILVER           |
+| 1936 CHRYSLER AIRFLOW                       |
+| 1900S VINTAGE TRI-PLANE                     |
+| 1961 CHEVROLET IMPALA                       |
+| 1980?S GM MANHATTAN EXPRESS                 |
+| 1997 BMW F650 ST                            |
+| 1982 DUCATI 996 R                           |
+| 1954 GREYHOUND SCENICRUISER                 |
+| 1950'S CHICAGO SURFACE LINES STREETCAR      |
+| 1996 PETERBILT 379 STAKE BED WITH OUTRIGGER |
+| 1928 FORD PHAETON DELUXE                    |
+| 1974 DUCATI 350 MK3 DESMO                   |
+| 1930 BUICK MARQUETTE PHAETON                |
+| DIAMOND T620 SEMI-SKIRTED TANKER            |
+| 1962 CITY OF DETROIT STREETCAR              |
+| 2002 YAMAHA YZR M1                          |
+| THE SCHOONER BLUENOSE                       |
+| AMERICAN AIRLINES: B767-300                 |
+| THE MAYFLOWER                               |
+| HMS BOUNTY                                  |
+| AMERICA WEST AIRLINES B757-200              |
+| THE USS CONSTITUTION SHIP                   |
+| 1982 CAMARO Z28                             |
+| ATA: B757-300                               |
+| F/A 18 HORNET 1/72                          |
+| THE TITANIC                                 |
+| THE QUEEN MARY                              |
+| AMERICAN AIRLINES: MD-11S                   |
+| BOEING X-32A JSF                            |
+| PONT YACHT                                  |
++---------------------------------------------+
+110 rows in set (0.00 sec)
+
+mysql> select lcase(productName) from products
+    -> order by(productname);
++---------------------------------------------+
+| lcase(productName)                          |
++---------------------------------------------+
+| 18th century schooner                       |
+| 18th century vintage horse carriage         |
+| 1900s vintage bi-plane                      |
+| 1900s vintage tri-plane                     |
+| 1903 ford model a                           |
+| 1904 buick runabout                         |
+| 1911 ford town car                          |
+| 1912 ford model t delivery wagon            |
+| 1913 ford model t speedster                 |
+| 1917 grand touring sedan                    |
+| 1917 maxwell touring car                    |
+| 1926 ford fire engine                       |
+| 1928 british royal navy airplane            |
+| 1928 ford phaeton deluxe                    |
+| 1928 mercedes-benz ssk                      |
+| 1930 buick marquette phaeton                |
+| 1932 alfa romeo 8c2300 spider sport         |
+| 1932 model a ford j-coupe                   |
+| 1934 ford v8 coupe                          |
+| 1936 chrysler airflow                       |
+| 1936 harley davidson el knucklehead         |
+| 1936 mercedes benz 500k roadster            |
+| 1936 mercedes-benz 500k special roadster    |
+| 1937 horch 930v limousine                   |
+| 1937 lincoln berline                        |
+| 1938 cadillac v-16 presidential limousine   |
+| 1939 cadillac limousine                     |
+| 1939 chevrolet deluxe coupe                 |
+| 1940 ford delivery sedan                    |
+| 1940 ford pickup truck                      |
+| 1940s ford truck                            |
+| 1941 chevrolet special deluxe cabriolet     |
+| 1948 porsche 356-a roadster                 |
+| 1948 porsche type 356 roadster              |
+| 1949 jaguar xk 120                          |
+| 1950's chicago surface lines streetcar      |
+| 1952 alpine renault 1300                    |
+| 1952 citroen-15cv                           |
+| 1954 greyhound scenicruiser                 |
+| 1956 porsche 356a coupe                     |
+| 1957 chevy pickup                           |
+| 1957 corvette convertible                   |
+| 1957 ford thunderbird                       |
+| 1957 vespa gs150                            |
+| 1958 chevy corvette limited edition         |
+| 1958 setra bus                              |
+| 1960 bsa gold star dbd34                    |
+| 1961 chevrolet impala                       |
+| 1962 city of detroit streetcar              |
+| 1962 lanciaa delta 16v                      |
+| 1962 volkswagen microbus                    |
+| 1964 mercedes tour bus                      |
+| 1965 aston martin db5                       |
+| 1966 shelby cobra 427 s/c                   |
+| 1968 dodge charger                          |
+| 1968 ford mustang                           |
+| 1969 chevrolet camaro z28                   |
+| 1969 corvair monza                          |
+| 1969 dodge charger                          |
+| 1969 dodge super bee                        |
+| 1969 ford falcon                            |
+| 1969 harley davidson ultimate chopper       |
+| 1970 chevy chevelle ss 454                  |
+| 1970 dodge coronet                          |
+| 1970 plymouth hemi cuda                     |
+| 1970 triumph spitfire                       |
+| 1971 alpine renault 1600s                   |
+| 1972 alfa romeo gta                         |
+| 1974 ducati 350 mk3 desmo                   |
+| 1976 ford gran torino                       |
+| 1980s black hawk helicopter                 |
+| 1980?s gm manhattan express                 |
+| 1982 camaro z28                             |
+| 1982 ducati 900 monster                     |
+| 1982 ducati 996 r                           |
+| 1982 lamborghini diablo                     |
+| 1985 toyota supra                           |
+| 1992 ferrari 360 spider red                 |
+| 1992 porsche cayenne turbo silver           |
+| 1993 mazda rx-7                             |
+| 1995 honda civic                            |
+| 1996 moto guzzi 1100i                       |
+| 1996 peterbilt 379 stake bed with outrigger |
+| 1997 bmw f650 st                            |
+| 1997 bmw r 1100 s                           |
+| 1998 chrysler plymouth prowler              |
+| 1999 indy 500 monte carlo ss                |
+| 1999 yamaha speed boat                      |
+| 2001 ferrari enzo                           |
+| 2002 chevy corvette                         |
+| 2002 suzuki xreo                            |
+| 2002 yamaha yzr m1                          |
+| 2003 harley-davidson eagle drag bike        |
+| america west airlines b757-200              |
+| american airlines: b767-300                 |
+| american airlines: md-11s                   |
+| ata: b757-300                               |
+| boeing x-32a jsf                            |
+| collectable wooden train                    |
+| corsair f4u ( bird cage)                    |
+| diamond t620 semi-skirted tanker            |
+| f/a 18 hornet 1/72                          |
+| hms bounty                                  |
+| p-51-d mustang                              |
+| pont yacht                                  |
+| the mayflower                               |
+| the queen mary                              |
+| the schooner bluenose                       |
+| the titanic                                 |
+| the uss constitution ship                   |
++---------------------------------------------+
+110 rows in set (0.00 sec)
+
+mysql> select productVendor, count(productCode) from product
+    -> where productLine ='Motorcycles'
+    -> group by productVendor
+    -> having count(productCode)>10
+    -> order by productVendor;
+ERROR 1146 (42S02): Table 'classicmodels.product' doesn't exist
+mysql> select productVendor, count(productCode) from products
+    -> where productLine ='Motorcycles'
+    -> group by productVendor
+    -> having count(productCode)>10
+    -> order by productVendor;
+Empty set (0.00 sec)
+
+mysql> select productVendor, count(productCode) from products
+    -> where productLine ='Motorcycles'
+    -> group by productVendor
+    -> order by productVendor;
++---------------------------+--------------------+
+| productVendor             | count(productCode) |
++---------------------------+--------------------+
+| Autoart Studio Design     |                  2 |
+| Exoto Designs             |                  1 |
+| Gearbox Collectibles      |                  1 |
+| Highway 66 Mini Classics  |                  3 |
+| Min Lin Diecast           |                  1 |
+| Red Start Diecast         |                  1 |
+| Second Gear Diecast       |                  1 |
+| Studio M Art Models       |                  1 |
+| Unimax Art Galleries      |                  1 |
+| Welly Diecast Productions |                  1 |
++---------------------------+--------------------+
+10 rows in set (0.00 sec)
+
+mysql> select * from customers where customerNumber =175;
++----------------+-----------------+-----------------+------------------+------------+---------------------+--------------+-------------+-------+------------+---------+------------------------+-------------+
+| customerNumber | customerName    | contactLastName | contactFirstName | phone      | addressLine1        | addressLine2 | city        | state | postalCode | country | salesRepEmployeeNumber | creditLimit |
++----------------+-----------------+-----------------+------------------+------------+---------------------+--------------+-------------+-------+------------+---------+------------------------+-------------+
+|            175 | Gift Depot Inc. | King            | Julie            | 2035552570 | 25593 South Bay Ln. | NULL         | Bridgewater | CT    | 97562      | USA     |                   1323 |    84300.00 |
++----------------+-----------------+-----------------+------------------+------------+---------------------+--------------+-------------+-------+------------+---------+------------------------+-------------+
+1 row in set (0.00 sec)
+
+mysql> explain select * from customers where customerNumber =175;
++----+-------------+-----------+------------+-------+---------------+---------+---------+-------+------+----------+-------+
+| id | select_type | table     | partitions | type  | possible_keys | key     | key_len | ref   | rows | filtered | Extra |
++----+-------------+-----------+------------+-------+---------------+---------+---------+-------+------+----------+-------+
+|  1 | SIMPLE      | customers | NULL       | const | PRIMARY       | PRIMARY | 4       | const |    1 |   100.00 | NULL  |
++----+-------------+-----------+------------+-------+---------------+---------+---------+-------+------+----------+-------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> alter table customers add index idx_customerNumber(customerNumber);
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> explain select * from customers where customerNumber =175;
++----+-------------+-----------+------------+-------+----------------------------+---------+---------+-------+------+----------+-------+
+| id | select_type | table     | partitions | type  | possible_keys              | key     | key_len | ref   | rows | filtered | Extra |
++----+-------------+-----------+------------+-------+----------------------------+---------+---------+-------+------+----------+-------+
+|  1 | SIMPLE      | customers | NULL       | const | PRIMARY,idx_customerNumber | PRIMARY | 4       | const |    1 |   100.00 | NULL  |
++----+-------------+-----------+------------+-------+----------------------------+---------+---------+-------+------+----------+-------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> alter table customers ADD INDEX idx_full_name(contactFirstName,contactLastName);
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> explain select * from customers where contactFirstName = 'Jean' or contactFirstName ='King';
++----+-------------+-----------+------------+-------+---------------+---------------+---------+------+------+----------+-----------------------+
+| id | select_type | table     | partitions | type  | possible_keys | key           | key_len | ref  | rows | filtered | Extra                 |
++----+-------------+-----------+------------+-------+---------------+---------------+---------+------+------+----------+-----------------------+
+|  1 | SIMPLE      | customers | NULL       | range | idx_full_name | idx_full_name | 52      | NULL |    3 |   100.00 | Using index condition |
++----+-------------+-----------+------------+-------+---------------+---------------+---------+------+------+----------+-----------------------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> alter table customers drop index idx_full_name;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> explain select * from customers where contactFirstName = 'Jean' or contactFirstName ='King';
++----+-------------+-----------+------------+------+---------------+------+---------+------+------+----------+-------------+
+| id | select_type | table     | partitions | type | possible_keys | key  | key_len | ref  | rows | filtered | Extra       |
++----+-------------+-----------+------------+------+---------------+------+---------+------+------+----------+-------------+
+|  1 | SIMPLE      | customers | NULL       | ALL  | NULL          | NULL | NULL    | NULL |  122 |    19.00 | Using where |
++----+-------------+-----------+------------+------+---------------+------+---------+------+------+----------+-------------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql>
